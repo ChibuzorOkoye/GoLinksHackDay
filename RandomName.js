@@ -1,5 +1,4 @@
-
-const token = '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'
+const token = process.env.ENV_TOKEN
 const username = 'chibuzorokoye'
 
 // console.log(token)
@@ -97,6 +96,34 @@ const fetchUserData  = async () => // fetches the data from the api
 }
 
 
+// const fetchLangData  = async () => // fetches the data from the api
+
+// {   
+//     let language;
+//     let userData = []
+
+//      const res = await fetch (`https://api.github.com/repos/${username}/Assignmen-4/languages`,
+//      {
+//         // headers :
+//         // {
+//         //     'Authorization': `token ${token}`
+//         // }
+//     }
+    
+//     ).then((response) => 
+//     {
+//         return response.json()
+//     }
+//       ).then(data =>
+//         userData = data
+
+        
+// )
+
+//     // const res2 = await fetch ()
+// }
+
+
 
 const fetchRepoData  = async () => // fetches the data from the api
 
@@ -118,25 +145,16 @@ const fetchRepoData  = async () => // fetches the data from the api
       ).then(data =>
         gitHubData = data
 
-    
         
 )
 
-// const user = await fetch(`https://api.github.com/users/${username}/repos`).then((response) => 
-// {
-//     return response.json()
-// }
-//   ).then(data =>
-//     name = data.name
-    
-//   )
 getforkCount(gitHubData)
 getstarCount(gitHubData)
 getlanguages(gitHubData)
 getSize(gitHubData)
 
 
-console.log(gitHubData[6].language)
+// console.log(gitHubData)
 // console.log(gitHubData[0].name)
 // console.log(gitHubData[0].size)
 
@@ -144,8 +162,7 @@ console.log(gitHubData[6].language)
 }
 
 
-// fetchRepoData();
-
+fetchRepoData();
 fetchUserData();
 
 
