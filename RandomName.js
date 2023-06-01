@@ -23,6 +23,7 @@ function getstarCount(gitHubData) // gets stargazers data
     starCount = starCount + parseInt(gitHubData[i].stargazers_count)
     
 }
+
 console.log('Total Stargaizer amount: ' + starCount)
 
 }
@@ -39,14 +40,20 @@ function getSize(gitHubData) //calculates the size of the repos
     if (avgsize <= 100)
     {
         console.log(avgsize + ' KB per repo')
+
+        // return avgsize + ' KB per repo'
     }
     else if (avgsize >= 1000)
     {
         console.log(avgsize + ' MB per repo')
+
+        // return avgsize + ' MB per repo'
     }
     else if (avgsize >= 10000)
     {
         console.log(avgsize + ' GB per repo')
+
+        // return avgsize + ' GB per repo'
     }
     
     else
@@ -58,6 +65,7 @@ function getRepos(gitHubData) //gets the total amount of repos
 {
     let repoCount = gitHubData.length
 
+    // return repoCount;
     console.log(repoCount)
 }
 
@@ -69,6 +77,8 @@ function getlanguages(gitHubData)
 function totalRepoAmount(gitHubData)
 {
     console.log(gitHubData.length + ' Total Repos')
+
+    // return gitHubData.length
 }
 
 
@@ -97,6 +107,8 @@ const fetchUserData  = async () => // fetches the data from the api
         name = userData.name
         console.log('Name: '+ name)//my name comes up as null
         console.log('Name: '+ userData.login)
+        // return userData.login
+        // return name
 
 }
 
@@ -145,7 +157,6 @@ const fetchRepoData  = async () => // fetches the data from the api
     
     ).then((response) => 
     {
-        
         return response.json()
     }
       ).then(data =>
