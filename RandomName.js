@@ -12,7 +12,7 @@ function getforkCount(gitHubData) //gets fork data
          forkCount = forkCount + parseInt(gitHubData[i].forks_count)
         
     }
-    console.log(forkCount)
+    console.log('Total fork amount: ' + forkCount)
 }
 
 function getstarCount(gitHubData) // gets stargazers data
@@ -23,7 +23,7 @@ function getstarCount(gitHubData) // gets stargazers data
     starCount = starCount + parseInt(gitHubData[i].stargazers_count)
     
 }
-console.log(starCount)
+console.log('Total Stargaizer amount: ' + starCount)
 
 }
 
@@ -38,19 +38,19 @@ function getSize(gitHubData) //calculates the size of the repos
 
     if (avgsize <= 100)
     {
-        console.log(avgsize + ' KB')
+        console.log(avgsize + ' KB per repo')
     }
     else if (avgsize >= 1000)
     {
-        console.log(avgsize + ' MB')
+        console.log(avgsize + ' MB per repo')
     }
     else if (avgsize >= 10000)
     {
-        console.log(avgsize + ' GB')
+        console.log(avgsize + ' GB per repo')
     }
     
     else
-    console.log(avgsize)
+    console.log(avgsize + 'per')
 }
 
 
@@ -66,6 +66,11 @@ function getlanguages(gitHubData)
 
 }
 
+function totalRepoAmount(gitHubData)
+{
+    console.log(gitHubData.length + ' Total Repos')
+}
+
 
 const fetchUserData  = async () => // fetches the data from the api
 
@@ -75,10 +80,10 @@ const fetchUserData  = async () => // fetches the data from the api
 
      const res = await fetch (`https://api.github.com/users/${username}`,
      {
-        headers :
-        {
-            'Authorization': `token ${token}`
-        }
+        // headers :
+        // {
+        //     'Authorization': `token ${token}`
+        // }
     }
     
     ).then((response) => 
@@ -90,8 +95,8 @@ const fetchUserData  = async () => // fetches the data from the api
 )
 
         name = userData.name
-        console.log(name)//my name comes up as null
-        console.log(userData.login)
+        console.log('Name: '+ name)//my name comes up as null
+        console.log('Name: '+ userData.login)
 
 }
 
@@ -132,14 +137,15 @@ const fetchRepoData  = async () => // fetches the data from the api
 
      const res = await fetch (`https://api.github.com/users/${username}/repos`,
      {
-        headers :
-        {
-            'Authorization': `token ${token}`
-        }
+        // headers :
+        // {
+        //     'Authorization': `token ${token}`
+        // }
     }
     
     ).then((response) => 
     {
+        
         return response.json()
     }
       ).then(data =>
@@ -152,13 +158,10 @@ getforkCount(gitHubData)
 getstarCount(gitHubData)
 getlanguages(gitHubData)
 getSize(gitHubData)
-
-
+totalRepoAmount(gitHubData)
 // console.log(gitHubData)
 // console.log(gitHubData[0].name)
 // console.log(gitHubData[0].size)
-
-    
 }
 
 
